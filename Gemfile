@@ -1,5 +1,8 @@
-source 'https://rubygems.org'
-
+if ENV['RUBYGEMS']
+  source 'https://rubygems.org'
+else
+  source 'https://gems.ruby-china.org'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -45,3 +48,5 @@ group :development do
   gem 'spring'
 end
 
+# my gems
+gem 'bootswatch-rails'
