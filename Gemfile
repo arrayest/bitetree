@@ -50,3 +50,4 @@ end
 
 # my gems
 gem 'bootswatch-rails'
+gem "react_on_rails"
