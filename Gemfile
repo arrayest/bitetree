@@ -54,7 +54,7 @@ group :development do
 end
 
 # my gems
+gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem "react_on_rails"
-
-gem 'bootstrap-sass'
+gem 'devise'
