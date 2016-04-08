@@ -4,6 +4,11 @@ else
   source 'https://gems.ruby-china.org'
 end
 
+# https://rails-assets.org/
+source 'https://rails-assets.org' do
+    gem 'rails-assets-adminlte'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record

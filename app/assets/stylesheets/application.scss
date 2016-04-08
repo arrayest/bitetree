@@ -10,8 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- 
- */
+*= require adminlte
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 // DO NOT REQUIRE TREE! It will interfere with load order!
