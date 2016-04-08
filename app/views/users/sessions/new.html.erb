@@ -1,26 +1,33 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<div class="login-box">
+  <div class="login-logo">
+    <b>后台管理</b>
+  </div><!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">管理员登录</p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group has-feedback">
+        <%= f.text_field :login, autofocus: true, class: "form-control", placeholder: "用户名或邮箱" %>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "密码" %>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :remember_me %><%= f.label :remember_me, '记住我' %>
+            </label>
+          </div>
+        </div><!-- /.col -->
+        <div class="col-xs-4">
+          <div><%= f.submit "登录", class: "btn btn-primary btn-block btn-flat" %></div>
+        </div><!-- /.col -->
+      </div>
+    <% end -%>
+    <%= link_to "忘记密码", new_password_path(resource_name) %><br />
+    <%= link_to "注册", new_registration_path(resource_name) %>
+  </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->

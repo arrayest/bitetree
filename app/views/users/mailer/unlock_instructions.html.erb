@@ -1,7 +1,7 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>您好， <span class="email"><%= @resource.email %></span>!</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>由于多次的不成功的登入尝试，您的帐户已被锁定。</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>点击下面的链接到您的帐户解锁:</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p class="btn-link"><%= link_to '账户解锁', unlock_url(@resource, unlock_token: @token) %></p>

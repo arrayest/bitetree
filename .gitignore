@@ -23,3 +23,10 @@ node_modules
 
 # Generated js bundles
 /app/assets/webpack/*
+# gitignore
+/config/database.yml
+/config/secrets.yml
+/public/assets/
+
+# Ignore application configuration
+/config/application.yml

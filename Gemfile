@@ -56,5 +56,9 @@ end
 # my gems
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
-gem "react_on_rails"
+gem 'react_on_rails'
 gem 'devise'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'simple_form'
+gem 'figaro'

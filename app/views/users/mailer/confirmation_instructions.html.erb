@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<div>
+  <p>您好： <span class="email"><%= @email %></span>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+  <p>请点击下面的按钮完成注册：</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p class="btn-link">
+    <%= link_to '完成注册', confirmation_url(@resource, confirmation_token: @token) %>
+  </p>
+</div>
+

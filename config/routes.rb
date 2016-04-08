@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: :user, controllers: {
+    sessions: 'users/sessions',
+    registrations: "users/registrations",
+    passwords: "users/passwords",
+    confirmations: "users/confirmations",
+    unlocks: "users/unlocks"
+  }
   get 'hello_world', to: 'hello_world#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -8,6 +14,10 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'welcome#index'
 
+  # admin namespace
+  namespace :admin do
+    get 'dashboard'
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
