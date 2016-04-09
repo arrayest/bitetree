@@ -45,7 +45,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-remote'
+  gem 'awesome_print'
 end
 
 group :development do
@@ -66,3 +69,5 @@ gem 'devise-i18n'
 gem 'simple_form'
 gem 'figaro'
 gem "font-awesome-rails"
+gem 'rails_admin'
+gem 'rails_admin-i18n', git: 'https://github.com/arrayest/rails_admin-i18n', branch: 'master'
