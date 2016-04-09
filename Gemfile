@@ -6,7 +6,10 @@ end
 
 # https://rails-assets.org/
 source 'https://rails-assets.org' do
-    gem 'rails-assets-adminlte'
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-adminlte'
+  gem 'rails-assets-fastclick'
+  gem 'rails-assets-ionicons'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -54,7 +57,7 @@ group :development do
 end
 
 # my gems
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'react_on_rails'
 gem 'devise'
@@ -62,3 +65,4 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'simple_form'
 gem 'figaro'
+gem "font-awesome-rails"

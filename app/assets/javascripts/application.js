@@ -22,8 +22,5 @@
 // require jquery
 // require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require adminlte
-
-// bootstrap-sprockets depends on vendor-bundle for jQuery.
-//= require bootstrap-sprockets
-
