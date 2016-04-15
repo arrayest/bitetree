@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,6 +8,14 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
+
+  def avatar_url
+    if self.avatar.url
+      self.avatar.url(:large)
+    else
+      "/img/user4-128x128.jpg"
+    end
+  end
 
   class << self
     def find_for_database_authentication(warden_conditions)

@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   namespace :admin do
     mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
     get 'dashboard'
+    resources :users, only: [:index] do
+      member do
+        get 'profile', 'password'
+        patch 'update_profile', 'update_password'
+      end
+    end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

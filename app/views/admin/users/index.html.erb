@@ -1,0 +1,63 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    用户审核
+    <small>用户列表</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-user"></i>用户审核</a></li>
+    <li class="active">用户列表</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">用户列表</h3>
+        </div><!-- /.box-header -->
+        <!-- table start -->
+        <table class="table table-bordered table-striped dataTable" role="grid">
+          <thead>
+            <tr>
+              <th>用户邮箱</th>
+              <th>用户名</th>
+              <th>用户昵称</th>
+              <th>手机号</th>
+              <th>地址</th>
+              <th>头像</th>
+              <th>锁定时间</th>
+              <th>当前IP</th>
+              <th>登录失败次数</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td><%= user.username %></td>
+                <td><%= user.nickname || "未设置"%></td>
+                <td><%= user.phone || "未设置" %></td>
+                <td><%= user.address %></td>
+                <td><%= image_tag user.avatar.url, class: "user-image", size: "24", alt: "UA" %></td>
+                <td><%= user.locked_at || "没有锁定" %></td>
+                <td><%= user.current_sign_in_ip %></td>
+                <td><%= user.failed_attempts %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td style="text-align: center;" colspan="12">
+                <%= paginate @users %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.box -->
+    </div>
+  </div>
+</section>

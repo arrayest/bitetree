@@ -27,6 +27,7 @@ node_modules
 /config/database.yml
 /config/secrets.yml
 /public/assets/
+/public/uploads/
 
 # Ignore application configuration
 /config/application.yml

@@ -1,0 +1,57 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    账户设置
+    <small>基本信息</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-user"></i>账户设置</a></li>
+    <li class="active">基本信息</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+      <!-- general form elements -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">基本信息</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <%= form_tag update_profile_admin_user_path, method: :patch, multipart: true, role: "form", id: "admin_users_profile" do %>
+          <div class="box-body">
+            <div class="form-group">
+              <label for="nickname">昵称</label>
+              <%= text_field_tag :nickname, @user.nickname, autofocus: true, class: "form-control", placeholder: "请输入店面负责人姓名" %>
+            </div>
+            <div class="form-group">
+              <label for="phone">手机号</label>
+              <%= text_field_tag :phone, @user.phone, class: "form-control", placeholder: "请输入手机号" %>
+            </div>
+            <div class="form-group">
+              <label for="phone">地址</label>
+              <%= text_field_tag :address, @user.address, class: "form-control", placeholder: "请输入详细地址" %>
+            </div>
+            <div class="form-group">
+              <label for="avatar">上传用户头像</label>
+              <% if @user.avatar.url %>
+                <div>
+                  <label>当前用户已上传的头像</label>
+                  <%= image_tag @user.avatar, class: "img-circle", alt: "User Image", size: "32" %>
+                </div>
+              <% end %>
+              <%= file_field_tag :avatar, required: @user.avatar.url.nil? %>
+              <p class="help-block">100px*100px以上</p>
+            </div>
+          </div>
+          <div class="box-footer">
+            <%= submit_tag "保存", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div><!-- /.box -->
+    </div>
+  </div>
+</section>
