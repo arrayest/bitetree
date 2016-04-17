@@ -3,7 +3,9 @@ class Admin::UsersController < AdminApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all.page(params[:page]).per(10)
+    @q = User.ransack(params[:q])
+    @q.sorts = "id desc" if @q.sorts.empty?
+    @users = @q.result.page(params[:page]).per(10)
   end
 
   def new

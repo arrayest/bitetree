@@ -21,6 +21,10 @@
           <h3 class="box-title">用户列表</h3>
           <%= link_to "新建用户", new_admin_user_path, class: "btn btn-success pull-right" %>
         </div><!-- /.box-header -->
+        <%= search_form_for [:admin, @q], class: "navbar-form", role: "search" do |f| %>
+          <%= f.search_field :username_cont, class: "form-control", placeholder: "用户名" %>
+          <%= submit_tag "搜索", class: "btn btn-default" %>
+        <% end %>
         <!-- table start -->
         <table class="table table-bordered table-striped dataTable" role="grid">
           <thead>
