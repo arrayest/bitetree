@@ -11,8 +11,10 @@
  * file per style scope.
  *
  *= require bootstrap
- *= require adminlte
- *= require adminlte/skins/_all-skins
+ *= require bootswatch/united/bootstrap
  *= require font-awesome
  *= require ionicons
+ *= require welcome
  */
+ @import "bootswatch/united/_variables";
+ @import "bootswatch/united/_bootswatch";
