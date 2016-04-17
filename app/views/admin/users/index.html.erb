@@ -23,6 +23,8 @@
         </div><!-- /.box-header -->
         <%= search_form_for [:admin, @q], class: "navbar-form", role: "search" do |f| %>
           <%= f.search_field :username_cont, class: "form-control", placeholder: "用户名" %>
+          <%= f.search_field :email_cont, class: "form-control", placeholder: "邮箱" %>
+          <%= f.search_field :phone_cont, class: "form-control", placeholder: "手机号" %>
           <%= submit_tag "搜索", class: "btn btn-default" %>
         <% end %>
         <!-- table start -->
