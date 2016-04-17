@@ -1,0 +1,56 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    角色列表
+    <small>角色列表</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-user"></i>角色列表</a></li>
+    <li class="active">角色列表</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">角色</h3>
+          <%= link_to "新建角色", new_admin_role_path, class: "btn btn-success pull-right" %>
+        </div><!-- /.box-header -->
+        <!-- table start -->
+        <table class="table table-bordered table-striped dataTable" role="grid">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>角色名</th>
+              <th>角色用户数</th>
+              <th>创建时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @roles.each do |role| %>
+              <tr>
+                <td><%= role.id %></td>
+                <td><%= role.name %></td>
+                <td><%= role.users.count %></td>
+                <td><%= role.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                <td><%= link_to "编辑", edit_admin_role_path(role), class: "btn btn-xs btn-success" %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td style="text-align: center;" colspan="12">
+                <%= paginate @roles %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.box -->
+    </div>
+  </div>
+</section>

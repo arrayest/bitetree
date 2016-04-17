@@ -47,6 +47,11 @@
               <i class="fa fa-circle-o"></i>用户管理
             <% end %>
           </li>
+          <li class="<%= "active" if current_page?(admin_roles_path) %>">
+            <%= link_to admin_roles_path do %>
+              <i class="fa fa-circle-o"></i>用户角色管理
+            <% end %>
+          </li>
         </ul>
       </li>
       <li class="treeview <%= "active" if (controller_name.in?(%w[users]) && !action_name.in?(%w[index]))%>">

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         patch 'update_profile', 'update_password'
       end
     end
+    resources :roles, only: [:index, :new, :create, :update, :edit]
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

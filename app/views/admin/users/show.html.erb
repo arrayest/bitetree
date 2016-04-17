@@ -61,6 +61,12 @@
                   <%= image_tag @user.avatar.url, class: "user-image", size: "48", alt: "UA" %>
                 </td>
               </tr>
+              <tr>
+                <th>用户角色:</th>
+                <td>
+                  <%= @user.roles_name.join(", ") %>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

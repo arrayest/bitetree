@@ -1,0 +1,38 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    编辑角色
+    <small>编辑角色</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-user"></i>编辑角色</a></li>
+    <li class="active">编辑角色</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-6"> <!-- general form elements -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">编辑角色信息</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <%= form_for @role, url: admin_role_path do |f| %>
+          <div class="box-body">
+            <div class="form-group">
+              <label for="name">角色名</label>
+              <%= f.text_field :name, class: "form-control", placeholder: "请输入角色名" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "保存", data: {disable_with: "创建中..."}, class: "btn btn-success" %>
+              <%= link_to "返回", admin_roles_path, class: "btn btn-success pull-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div><!-- /.box -->
+    </div>
+  </div>
+</section>
