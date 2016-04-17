@@ -56,6 +56,7 @@ GEM
       railties (>= 3.1)
     builder (3.2.2)
     byebug (8.2.4)
+    cancancan (1.13.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -207,6 +208,7 @@ GEM
     remotipart (1.2.1)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
+    rolify (5.0.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.4)
@@ -254,6 +256,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-kaminari-views
   bootswatch-rails
+  cancancan
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
@@ -279,6 +282,7 @@ DEPENDENCIES
   rails_admin
   rails_admin-i18n!
   react_on_rails
+  rolify
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form

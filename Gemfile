@@ -65,6 +65,8 @@ end
 gem 'bootswatch-rails'
 gem 'react_on_rails'
 gem 'devise'
+gem 'cancancan'
+gem 'rolify'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'simple_form'
