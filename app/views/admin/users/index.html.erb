@@ -19,17 +19,21 @@
       <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">用户列表</h3>
+          <%= link_to "新建用户", new_admin_user_path, class: "btn btn-success pull-right" %>
         </div><!-- /.box-header -->
         <!-- table start -->
         <table class="table table-bordered table-striped dataTable" role="grid">
           <thead>
             <tr>
-              <th>用户邮箱</th>
+              <th>ID</th>
               <th>用户名</th>
+              <th>用户邮箱</th>
               <th>用户昵称</th>
               <th>手机号</th>
               <th>地址</th>
               <th>头像</th>
+              <th>创建时间</th>
+              <th>激活时间</th>
               <th>锁定时间</th>
               <th>当前IP</th>
               <th>登录失败次数</th>
@@ -39,12 +43,15 @@
           <tbody>
             <% @users.each do |user| %>
               <tr>
-                <td><%= user.email %></td>
+                <td><%= link_to user.id, admin_user_path(user) %></td>
                 <td><%= user.username %></td>
+                <td><%= user.email %></td>
                 <td><%= user.nickname || "未设置"%></td>
                 <td><%= user.phone || "未设置" %></td>
                 <td><%= user.address %></td>
                 <td><%= image_tag user.avatar.url, class: "user-image", size: "24", alt: "UA" %></td>
+                <td><%= user.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                <td><%= user.confirmed_at.try(:strftime, '%Y-%m-%d %H:%M:%S') || "没有激活" %></td>
                 <td><%= user.locked_at || "没有锁定" %></td>
                 <td><%= user.current_sign_in_ip %></td>
                 <td><%= user.failed_attempts %></td>

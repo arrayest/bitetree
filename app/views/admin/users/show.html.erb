@@ -1,0 +1,75 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    显示用户
+    <small>显示用户</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-user"></i>显示用户</a></li>
+    <li class="active">显示用户</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">用户信息</h3>
+        </div><!-- /.box-header -->
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th style="width:30%">ID:</th>
+                <td><%= @user.id %></td>
+              </tr>
+              <tr>
+                <th>邮箱:</th>
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <th>用户名:</th>
+                <td>
+                  <%= @user.username %>
+                </td>
+              </tr>
+              <tr>
+                <th>昵称:</th>
+                <td>
+                  <%= @user.nickname %>
+                </td>
+              </tr>
+              <tr>
+                <th>手机号:</th>
+                <td>
+                  <%= @user.phone %>
+                </td>
+              </tr>
+              <tr>
+                <th>地址:</th>
+                <td>
+                  <%= @user.address %>
+                </td>
+              </tr>
+              <tr>
+                <th>用户头像:</th>
+                <td>
+                  <%= image_tag @user.avatar.url, class: "user-image", size: "48", alt: "UA" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer">
+          <%= link_to "编辑", edit_admin_user_path, class: "btn btn-success pull-left" %>
+          <%= link_to "返回", admin_users_path, class: "btn btn-success pull-right" %>
+        </div>
+        <!-- /.box-footer -->
+      </div><!-- /.box -->
+    </div>
+  </div>
+</section>

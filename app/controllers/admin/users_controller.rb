@@ -1,8 +1,29 @@
 class Admin::UsersController < AdminApplicationController
-  before_action :set_user, only: [:profile, :password, :update_profile, :update_password]
+  before_action :set_current_user, only: [:profile, :password, :update_profile, :update_password]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all.page(params[:page]).per(15)
+    @users = User.all.page(params[:page]).per(10)
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.create(user_params)
+    redirect_to admin_user_path(@user)
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user.update(user_params)
+    redirect_to admin_user_path(@user)
   end
 
   def profile
@@ -32,7 +53,15 @@ class Admin::UsersController < AdminApplicationController
   end
 
   private
-  def set_user
+  def user_params
+    params.require(:user).permit(:email, :username, :password, :nickname, :phone, :address, :avatar)
+  end
+
+  def set_current_user
     @user = current_user
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

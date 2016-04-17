@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
     get 'dashboard'
-    resources :users, only: [:index] do
+    resources :users, only: [:index, :new, :create, :show, :update, :edit] do
       member do
         get 'profile', 'password'
         patch 'update_profile', 'update_password'

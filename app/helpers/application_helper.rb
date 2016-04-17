@@ -6,4 +6,10 @@ module ApplicationHelper
   def bootstrap_icon_for flash_type
     { success: "ok-circle", error: "remove-circle", alert: "warning-sign", notice: "exclamation-sign" }[flash_type] || "question-sign"
   end
+
+  def paginate objects, options = {}
+    options.reverse_merge!( theme: 'twitter-bootstrap-3' )
+
+    super( objects, options )
+  end
 end
