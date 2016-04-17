@@ -16,7 +16,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join("client", "assets", "stylesheets")
 Rails.application.config.assets.paths << Rails.root.join("client", "assets", "images")
 Rails.application.config.assets.paths << Rails.root.join("client", "assets", "fonts")
-Rails.application.config.assets.precompile += %w( server-bundle.js admin_application.css admin_application.js )
+Rails.application.config.assets.precompile += %w( server-bundle.js admin_application.css admin_application.js devise.css devise.js )
 
 # Add folder with webpack generated assets to assets.paths
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "webpack")
