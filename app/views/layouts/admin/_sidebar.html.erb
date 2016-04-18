@@ -30,30 +30,32 @@
           <i class="fa fa-home"></i> <span>首页</span>
         <% end %>
       </li>
-      <li class="<%= "active" if (controller_name.in?(%w[users])) && action_name.in?(%w[index]) %> treeview">
-        <%= link_to "#" do %>
-          <i class="fa fa-database"></i>
-          <span>超级管理员</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        <% end %>
-        <ul class="treeview-menu">
-          <li class="<%= "active" if current_page?(admin_rails_admin_path) %>">
-            <%= link_to admin_rails_admin_path do %>
-              <i class="fa fa-circle-o"></i>RailsAdmin
-            <% end %>
-          </li>
-          <li class="<%= "active" if current_page?(admin_users_path) %>">
-            <%= link_to admin_users_path do %>
-              <i class="fa fa-circle-o"></i>用户管理
-            <% end %>
-          </li>
-          <li class="<%= "active" if current_page?(admin_roles_path) %>">
-            <%= link_to admin_roles_path do %>
-              <i class="fa fa-circle-o"></i>用户角色管理
-            <% end %>
-          </li>
-        </ul>
-      </li>
+      <% if current_user.has_role?(:super_admin) %>
+        <li class="<%= "active" if (controller_name.in?(%w[users roles])) && action_name.in?(%w[index]) %> treeview">
+          <%= link_to "#" do %>
+            <i class="fa fa-database"></i>
+            <span>超级管理员</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          <% end %>
+          <ul class="treeview-menu">
+            <li class="<%= "active" if current_page?(admin_rails_admin_path) %>">
+              <%= link_to admin_rails_admin_path do %>
+                <i class="fa fa-circle-o"></i>RailsAdmin
+              <% end %>
+            </li>
+            <li class="<%= "active" if current_page?(admin_users_path) %>">
+              <%= link_to admin_users_path do %>
+                <i class="fa fa-circle-o"></i>用户管理
+              <% end %>
+            </li>
+            <li class="<%= "active" if current_page?(admin_roles_path) %>">
+              <%= link_to admin_roles_path do %>
+                <i class="fa fa-circle-o"></i>用户角色管理
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
       <li class="treeview <%= "active" if (controller_name.in?(%w[users]) && !action_name.in?(%w[index]))%>">
         <a href="#">
           <i class="fa fa-user"></i>

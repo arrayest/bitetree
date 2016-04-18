@@ -11,6 +11,15 @@ class Ability
     #     can :read, :all
     #   end
     #
+
+    if user.blank?
+      # not logged in
+      cannot :manage, :all
+    elsif user.has_role?(:super_admin)
+      # super_admin
+      can :manage, :all
+    end
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

@@ -2,7 +2,9 @@ class Admin::RolesController < AdminApplicationController
   before_action :set_role, only: [:edit, :update]
 
   def index
-    @roles = Role.all.page(params[:page]).per(10)
+    @q = Role.ransack(params[:q])
+    @q.sorts = "id asc" if @q.sorts.empty?
+    @roles = @q.result.page(params[:page]).per(10)
   end
 
   def new

@@ -1,0 +1,19 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.pagination {
+  li{
+    a:hover {
+      color: #00a65a;
+    }
+  }
+  li.page.active {
+    a {
+      background-color: #00a65a;
+      border-color: #008d4c;
+    }
+    a:hover {
+      border-color: #CCC;
+    }
+  }
+}
