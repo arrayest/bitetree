@@ -31,7 +31,7 @@
         <% end %>
       </li>
       <% if current_user.has_role?(:super_admin) %>
-        <li class="<%= "active" if (controller_name.in?(%w[users roles])) && action_name.in?(%w[index]) %> treeview">
+        <li class="<%= "active" if (controller_name.in?(%w[users roles])) && action_name.in?(%w[index show]) %> treeview">
           <%= link_to "#" do %>
             <i class="fa fa-database"></i>
             <span>超级管理员</span>
@@ -43,7 +43,7 @@
                 <i class="fa fa-circle-o"></i>RailsAdmin
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(admin_users_path) %>">
+            <li class="<%= "active" if (controller_name.in?(%w[users]) && action_name.in?(%w[index show])) %>">
               <%= link_to admin_users_path do %>
                 <i class="fa fa-circle-o"></i>用户管理
               <% end %>
@@ -56,7 +56,7 @@
           </ul>
         </li>
       <% end %>
-      <li class="treeview <%= "active" if (controller_name.in?(%w[users]) && !action_name.in?(%w[index]))%>">
+      <li class="treeview <%= "active" if (controller_name.in?(%w[users]) && action_name.in?(%w[profile password]))%>">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>账户设置</span>

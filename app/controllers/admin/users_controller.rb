@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminApplicationController
   before_action :set_current_user, only: [:profile, :password, :update_profile, :update_password]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :update_roles]
 
   def index
     @q = User.ransack(params[:q])
@@ -54,9 +54,14 @@ class Admin::UsersController < AdminApplicationController
     redirect_to :back
   end
 
+  def update_roles
+    @user.role_ids = user_params[:role_ids].delete_if { |id| id.blank? }
+    redirect_to :back
+  end
+
   private
   def user_params
-    params.require(:user).permit(:email, :username, :password, :nickname, :phone, :address, :avatar)
+    params.require(:user).permit(:email, :username, :password, :nickname, :phone, :address, :avatar, :role_ids => [])
   end
 
   def set_current_user

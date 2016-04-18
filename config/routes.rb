@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :show, :update, :edit] do
       member do
         get 'profile', 'password'
-        patch 'update_profile', 'update_password'
+        patch 'update_profile', 'update_password', 'update_roles'
       end
     end
     resources :roles, only: [:index, :new, :create, :update, :edit]
