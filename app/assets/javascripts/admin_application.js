@@ -24,3 +24,4 @@
 //= require bootstrap
 //= require adminlte
 //= require fastclick
+//= require 'china_city/jquery.china_city'

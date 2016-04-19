@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ChinaCity::Engine => '/china_city'
   devise_for :users, path: :user, controllers: {
     sessions: 'users/sessions',
     registrations: "users/registrations",
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
       end
     end
     resources :roles, only: [:index, :new, :create, :update, :edit]
+    resources :regions, only: [:index, :show]
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

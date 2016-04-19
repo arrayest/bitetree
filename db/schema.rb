@@ -11,10 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417061431) do
+ActiveRecord::Schema.define(version: 20160418074702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "reference_id"
+    t.string   "name"
+    t.integer  "province_id"
+    t.integer  "level"
+    t.string   "zip_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["level"], name: "index_cities_on_level", using: :btree
+  add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
+  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+  add_index "cities", ["reference_id"], name: "index_cities_on_reference_id", using: :btree
+  add_index "cities", ["zip_code"], name: "index_cities_on_zip_code", using: :btree
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "reference_id"
+    t.string   "name"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
+  add_index "districts", ["name"], name: "index_districts_on_name", using: :btree
+  add_index "districts", ["reference_id"], name: "index_districts_on_reference_id", using: :btree
+
+  create_table "provinces", force: :cascade do |t|
+    t.string   "reference_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "provinces", ["name"], name: "index_provinces_on_name", using: :btree
+  add_index "provinces", ["reference_id"], name: "index_provinces_on_reference_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +64,18 @@ ActiveRecord::Schema.define(version: 20160417061431) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "streets", force: :cascade do |t|
+    t.string   "reference_id"
+    t.string   "name"
+    t.integer  "district_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "streets", ["district_id"], name: "index_streets_on_district_id", using: :btree
+  add_index "streets", ["name"], name: "index_streets_on_name", using: :btree
+  add_index "streets", ["reference_id"], name: "index_streets_on_reference_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
