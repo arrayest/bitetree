@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418074702) do
+ActiveRecord::Schema.define(version: 20160420121946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,36 @@ ActiveRecord::Schema.define(version: 20160418074702) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "photo"
+    t.string   "hotline"
+    t.string   "area"
+    t.decimal  "level"
+    t.boolean  "verify"
+    t.string   "address"
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.integer  "district_id"
+    t.integer  "street_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shops", ["city_id"], name: "index_shops_on_city_id", using: :btree
+  add_index "shops", ["district_id"], name: "index_shops_on_district_id", using: :btree
+  add_index "shops", ["province_id"], name: "index_shops_on_province_id", using: :btree
+  add_index "shops", ["street_id"], name: "index_shops_on_street_id", using: :btree
+
+  create_table "shops_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
+  end
+
+  add_index "shops_users", ["shop_id", "user_id"], name: "index_shops_users_on_shop_id_and_user_id", using: :btree
+  add_index "shops_users", ["user_id", "shop_id"], name: "index_shops_users_on_user_id_and_shop_id", using: :btree
 
   create_table "streets", force: :cascade do |t|
     t.string   "reference_id"

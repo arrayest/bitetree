@@ -23,10 +23,12 @@ Rails.application.routes.draw do
       member do
         get 'profile', 'password'
         patch 'update_profile', 'update_password', 'update_roles'
+        post 'create_shop'
       end
     end
     resources :roles, only: [:index, :new, :create, :update, :edit]
     resources :regions, only: [:index, :show]
+    resources :shops, only: [:index, :show]
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

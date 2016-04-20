@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   rolify
+  has_and_belongs_to_many :shops, :join_table => :shops_users
   mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

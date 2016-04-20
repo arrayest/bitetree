@@ -67,24 +67,19 @@
               </tr>
               <tr>
                 <th>Role</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>用户角色:</th>
                 <td>
-                  <%= @user.roles_name.join(", ") %>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">
+                  <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myRoleModal">
                     编辑
                   </button>
 
                   <!-- Modal -->
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal fade" id="myRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">编辑用户角色</h4>
+                          <h4 class="modal-title" id="myRoleModalLabel">编辑用户角色</h4>
                         </div>
                         <%= form_for @user, url: update_roles_admin_user_path do |f| %>
                           <div class="modal-body">
@@ -102,6 +97,79 @@
                   </div>
                 </td>
               </tr>
+              <tr>
+                <th>用户角色:</th>
+                <td>
+                  <%= @user.roles_name.join(", ") %>
+                </td>
+              </tr>
+              <tr>
+                <th>Shop</th>
+                <td>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myShopModal">
+                    创建店铺
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="myShopModal" tabindex="-1" role="dialog" aria-labelledby="myShopModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myShopModalLabel">创建店铺</h4>
+                        </div>
+                        <%= form_for @user, url: create_shop_admin_user_path, method: :post do |f| %>
+                          <div class="modal-body">
+                            <%= f.fields_for :shops do |fs| %>
+                              <div class="form-group">
+                                <label for="user_shops_name">店名</label>
+                                <%= fs.text_field :name, required: true, class: "form-control", placeholder: "请输入店铺名" %>
+                              </div>
+                              <div class="form-group">
+                                <label for="user_shops_hotline">热线</label>
+                                <%= fs.text_field :hotline, required: true, class: "form-control", placeholder: "请输入热线电话" %>
+                              </div>
+                              <div class="form-group">
+                                <label for="user_shops_area">面积</label>
+                                <%= fs.text_field :area, required: true, class: "form-control", placeholder: "请输入店铺面积" %>
+                              </div>
+                              <div class="form-group">
+                                <label for="user_shops_address">地址</label>
+                                <%= fs.text_field :address, required: true, class: "form-control", placeholder: "请输入店铺地址" %>
+                              </div>
+                              <div class="form-group">
+                                <label for="user_shops_description">地址</label>
+                                <%= fs.text_area :description, class: "form-control", placeholder: "描述" %>
+                              </div>
+                            <% end %>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                              关闭
+                            </button>
+                            <%= f.submit "提交", class: "btn btn-success" %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+                <tr>
+                  <th>店铺名</th>
+                  <th>热线电话</th>
+                  <th>面积</th>
+                  <th>地址</th>
+                </tr>
+              <% @shops.each do |shop| %>
+                <tr>
+                  <td><%= shop.name %></td>
+                  <td><%= shop.hotline %></td>
+                  <td><%= shop.area %></td>
+                  <td><%= shop.address %></td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
