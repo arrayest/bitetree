@@ -72,7 +72,7 @@ class Admin::UsersController < AdminApplicationController
   end
 
   def user_shops_params
-    params.require(:user).require(:shops).permit(:name, :hotline, :area, :address, :description)
+    params.require(:user).require(:shops).permit(:name, :photo, :hotline, :area, :address, :description)
   end
 
   def set_current_user

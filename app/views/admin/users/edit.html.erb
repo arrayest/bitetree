@@ -18,10 +18,11 @@
       <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">用户信息</h3>
+          <%= link_to "返回", admin_user_path, class: "btn btn-success pull-right" %>
         </div><!-- /.box-header -->
-        <!-- form start -->
-        <%= form_for @user, url: admin_user_path do |f| %>
-          <div class="box-body">
+        <div class="box-body">
+          <!-- form start -->
+          <%= form_for @user, url: admin_user_path do |f| %>
             <div class="form-group">
               <label for="email">邮箱</label>
               <%= f.email_field :email, required: true, class: "form-control", placeholder: "请输入邮箱" %>
@@ -55,8 +56,8 @@
             <div class="form-group">
               <%= f.submit "保存", data: {disable_with: "创建中..."}, class: "btn btn-success" %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div><!-- /.box -->
     </div>
   </div>

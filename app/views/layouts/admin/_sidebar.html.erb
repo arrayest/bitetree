@@ -31,7 +31,7 @@
         <% end %>
       </li>
       <% if current_user.has_role?(:super_admin) %>
-        <li class="<%= "active" if (controller_name.in?(%w[users roles regions shops])) && action_name.in?(%w[index show]) %> treeview">
+        <li class="<%= "active" if (controller_name.in?(%w[users roles regions shops])) && action_name.in?(%w[index show edit]) %> treeview">
           <%= link_to "#" do %>
             <i class="fa fa-database"></i>
             <span>超级管理员</span>
@@ -58,7 +58,7 @@
                 <i class="fa fa-circle-o"></i>省市区管理
               <% end %>
             </li>
-            <li class="<%= "active" if (controller_name.in?(%w[shops]) && action_name.in?(%w[index show])) %>">
+            <li class="<%= "active" if (controller_name.in?(%w[shops]) && action_name.in?(%w[index show edit])) %>">
               <%= link_to admin_shops_path do %>
                 <i class="fa fa-circle-o"></i>店铺管理
               <% end %>

@@ -1,12 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    城市区域
-    <small>城市区域</small>
+    店铺详情
+    <small>店铺详情</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-user"></i>城市区域</a></li>
-    <li class="active">城市区域</li>
+    <li><a href="#"><i class="fa fa-user"></i>店铺详情</a></li>
+    <li class="active">店铺详情</li>
   </ol>
 </section>
 
@@ -18,33 +18,45 @@
       <!-- general form elements -->
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">区域</h3>
+          <h3 class="box-title">店铺信息</h3>
         </div><!-- /.box-header -->
         <div class="table-responsive">
           <table class="table">
             <tbody>
               <tr>
-                <th style="width:10%">市</th>
-                <th><%= @city.name %></th>
+                <th>Shop</th>
+                <td></td>
               </tr>
               <tr>
-                <th>县</th>
-                <th>乡镇</th>
+                <th style="width:30%">ID</th>
+                <td><%= @shop.id %></td>
               </tr>
-              <% @city.districts.each do |district| %>
-                <tr>
-                  <td><%= district.name %></td>
-                  <td>
-                    <% district.streets.each do |street| %>
-                      <span>
-                      <%= street.name %>
-                      </span>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
+              <tr>
+                <th>店名</th>
+                <td><%= @shop.name %></td>
+              </tr>
+              <tr>
+                <th>热线电话</th>
+                <td><%= @shop.hotline %></td>
+              </tr>
+              <tr>
+                <th>面积</th>
+                <td><%= @shop.area %></td>
+              </tr>
+              <tr>
+                <th>地址</th>
+                <td><%= @shop.address %></td>
+              </tr>
+              <tr>
+                <th>店铺照片</th>
+                <td><%= image_tag @shop.photo.url(:normal) %></td>
+              </tr>
             </tbody>
           </table>
+        </div>
+        <div class="box-footer">
+          <%= link_to "编辑", edit_admin_shop_path, class: "btn btn-success pull-left" %>
+          <%= link_to "返回", admin_shops_path, class: "btn btn-success pull-right" %>
         </div>
       </div><!-- /.box -->
     </div>

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
     resources :roles, only: [:index, :new, :create, :update, :edit]
     resources :regions, only: [:index, :show]
-    resources :shops, only: [:index, :show]
+    resources :shops, only: [:index, :show, :edit, :update]
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

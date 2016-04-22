@@ -32,6 +32,7 @@
         <table class="table table-bordered table-striped dataTable" role="grid">
           <thead>
             <tr>
+              <th>ID</th>
               <th>店铺名</th>
               <th>热线电话</th>
               <th>面积</th>
@@ -42,6 +43,7 @@
           <tbody>
             <% @shops.each do |shop| %>
               <tr>
+                <td><%= link_to shop.id, admin_shop_path(shop) %></td>
                 <td><%= shop.name %></td>
                 <td><%= shop.hotline %></td>
                 <td><%= shop.area %></td>
