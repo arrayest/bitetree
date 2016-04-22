@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
               <label for="shop_photo">店铺照片</label>
-              <%= f.file_field :photo, required: true %>
+              <%= f.file_field :photo, required: true, accept: "image/jpg,image/jpeg,image/png,image/gif" %>
               <p class="help-block">请上传一张店铺照片</p>
             </div>
             <div class="form-group">

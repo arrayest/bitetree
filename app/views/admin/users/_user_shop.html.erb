@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                       <label for="user_shops_photo">店铺照片</label>
-                      <%= fs.file_field :photo, required: true %>
+                      <%= fs.file_field :photo, required: true, accept: "image/jpg,image/jpeg,image/png,image/gif" %>
                       <p class="help-block">请上传一张店铺照片</p>
                     </div>
                     <div class="form-group">

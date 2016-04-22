@@ -51,7 +51,7 @@
                   <%= image_tag @user.avatar, class: "img-circle", alt: "User Image", size: "32" %>
                 </div>
               <% end %>
-              <%= f.file_field :avatar, required: @user.avatar.url.nil? %>
+              <%= f.file_field :avatar, required: @user.avatar.url.nil?, accept: "image/jpg,image/jpeg,image/png,image/gif" %>
             </div>
             <div class="form-group">
               <%= f.submit "保存", data: {disable_with: "创建中..."}, class: "btn btn-success" %>
