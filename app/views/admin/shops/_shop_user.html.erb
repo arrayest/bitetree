@@ -1,0 +1,28 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <th>User</th>
+      <td colspan="5"></td>
+    </tr>
+    <tr>
+      <th>邮箱</th>
+      <th>用户名</th>
+      <th>昵称</th>
+      <th>手机号</th>
+      <th>地址</th>
+      <th>用户头像</th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.email, admin_user_path(user) %></td>
+        <td><%= user.username %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.address %></td>
+        <td>
+          <%= image_tag user.avatar.url, class: "user-image", size: "48", alt: "UA" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

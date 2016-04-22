@@ -7,6 +7,7 @@ class Admin::ShopsController < AdminApplicationController
   end
 
   def show
+    @users = @shop.users
   end
 
   def edit

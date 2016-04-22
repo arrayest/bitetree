@@ -65,10 +65,10 @@
                   <%= image_tag @user.avatar.url, class: "user-image", size: "48", alt: "UA" %>
                 </td>
               </tr>
-              <%= render "user_role" %>
-              <%= render "user_shop" %>
             </tbody>
           </table>
+          <%= render "user_role" %>
+          <%= render "user_shop" %>
         </div>
         <div class="box-footer">
           <%= link_to "编辑", edit_admin_user_path, class: "btn btn-success pull-left" %>

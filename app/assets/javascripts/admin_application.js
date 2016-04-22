@@ -24,4 +24,6 @@
 //= require bootstrap
 //= require adminlte
 //= require fastclick
-//= require 'china_city/jquery.china_city'
+//= require china_city/jquery.china_city
+//= require fluidbox/dist/js/jquery.fluidbox.min
+//= require admin/shops

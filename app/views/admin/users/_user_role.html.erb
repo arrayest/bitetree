@@ -1,38 +1,42 @@
-<tr>
-  <th>Role</th>
-  <td>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myRoleModal">
-      编辑
-    </button>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Role</th>
+      <td>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myRoleModal">
+          编辑
+        </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myRoleModalLabel">编辑用户角色</h4>
+        <!-- Modal -->
+        <div class="modal fade" id="myRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myRoleModalLabel">编辑用户角色</h4>
+              </div>
+              <%= form_for @user, url: update_roles_admin_user_path do |f| %>
+                <div class="modal-body">
+                  <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                  </button>
+                  <%= f.submit "提交", class: "btn btn-success" %>
+                </div>
+              <% end %>
+            </div>
           </div>
-          <%= form_for @user, url: update_roles_admin_user_path do |f| %>
-            <div class="modal-body">
-              <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">
-                关闭
-              </button>
-              <%= f.submit "提交", class: "btn btn-success" %>
-            </div>
-          <% end %>
         </div>
-      </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <th>用户角色:</th>
-  <td>
-    <%= @user.roles_name.join(", ") %>
-  </td>
-</tr>
+      </td>
+    </tr>
+    <tr>
+      <th>用户角色:</th>
+      <td>
+        <%= @user.roles_name.join(", ") %>
+      </td>
+    </tr>
+  </tbody>
+</table>

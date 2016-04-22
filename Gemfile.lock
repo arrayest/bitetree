@@ -171,6 +171,8 @@ GEM
     rails-assets-bootswatch (3.3.6.1)
       rails-assets-bootstrap (~> 3.3.6)
     rails-assets-fastclick (1.0.6)
+    rails-assets-fluidbox (2.0.3)
+      rails-assets-jquery (>= 1.9)
     rails-assets-ionicons (2.0.1)
     rails-assets-jquery (2.2.3)
     rails-deprecated_sanitizer (1.0.3)
@@ -293,6 +295,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-bootswatch!
   rails-assets-fastclick!
+  rails-assets-fluidbox!
   rails-assets-ionicons!
   rails-i18n
   rails_admin
