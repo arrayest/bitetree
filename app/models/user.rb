@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
+  after_save :set_letter_avatar, if: :need_set_letter_avatar?
 
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
@@ -19,6 +20,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def need_set_letter_avatar?
+    self.avatar.url.nil?
+  end
+
+  def username_for_avatar
+    # Translate chinese hanzi to pinyin
+    # https://github.com/flyerhzm/chinese_pinyin
+    Pinyin.t(self.username || "Albert")
+  end
+
   class << self
     def find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
@@ -29,4 +40,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  protected
+  def set_letter_avatar
+    self.update(avatar: File.open(LetterAvatar.generate(self.username_for_avatar, 240)))
+  end
+
 end
